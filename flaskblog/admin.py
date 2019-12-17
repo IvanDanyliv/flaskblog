@@ -56,7 +56,7 @@ class UserAdminView(ModelView, ActionsMixin):
             form.username.data, form.password.data, form.admin.data
         )
         form.populate_obj(model)
-        model.password = bcrypt.generate_password_hash(form.password.data)
+        model.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         self.session.add(model)
         self._on_model_change(form, model, True)
         self.session.commit()
@@ -71,7 +71,7 @@ class UserAdminView(ModelView, ActionsMixin):
             if form.new_password.data != form.confirm.data:
                 flash('Passwords must match!!!')
                 return
-            model.password = bcrypt.generate_password_hash(form.new_password.data)
+            model.password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
         self.session.add(model)
         self._on_model_change(form, model, False)
         self.session.commit()
