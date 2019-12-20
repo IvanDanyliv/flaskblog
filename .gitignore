@@ -1,5 +1,0 @@
-*.iml
-.env
-.idea
-venv
-*.db
