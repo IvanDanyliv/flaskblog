@@ -1,2 +1,0 @@
-# flaskblog
-PNU_project
